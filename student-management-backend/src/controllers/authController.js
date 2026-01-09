@@ -9,7 +9,7 @@ const Signup = async(req,res)=>{
         const newUser = new User({ name, email, password:hashedPassword, role});
         await newUser.save();
         return res.status(201).json({Message:"User Registerd Sucessfully", user:newUser});
-
+        
     } catch (error) {
         
         console.log(error);
