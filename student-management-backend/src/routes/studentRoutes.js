@@ -1,20 +1,14 @@
 import express from "express";
-import {
-  addStudent,
-  getStudents,
-  updateStudent,
-  deleteStudent,
-} from "../controllers/studentController.js";
+import { addStudent, getAllstudents, getStudent, updateStudent } from "../controllers/studentController.js";
 
-import protect from "../middleware/authMiddleware.js";
-import isAdmin from "../middleware/roleMiddleware.js";
+const studentRouter = express.Router();
 
 
-const router = express.Router();
+studentRouter.post("/add", addStudent);
+studentRouter.get("/get", getAllstudents);
+studentRouter.get("/get/:id", getStudent);
+studentRouter.put("/update/:id", updateStudent);
 
-router.post("/add", protect, isAdmin, addStudent);
-router.get("/", protect, getStudents);
-router.put("/:id", protect, isAdmin, updateStudent);
-router.delete("/:id", protect, isAdmin, deleteStudent);
 
-export default router;
+
+export default studentRouter;
