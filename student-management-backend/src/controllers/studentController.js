@@ -3,14 +3,14 @@ import students from "../models/studentModel.js";
 
 const addStudent = async(req,res)=>{
   try {
-    const {name,email,rollNo,className,age,phone} = req.body;
+    const {name,email,rollNo,className,age,marks} = req.body;
     const newStudent = await students({
       name,
       email,
       rollNo,
       className,
       age,
-      phone,
+      marks,
     });
 
     await newStudent.save();
@@ -60,7 +60,6 @@ const updateStudent = async(req,res)=>{
        {
          new: true, // return updated document
         
-         
        }
      );
 
@@ -83,14 +82,23 @@ const updateStudent = async(req,res)=>{
  };
 
 
-//  const deleteStudent = async(req,res)=>{
-//   try {
-//     const deletedStudent = 
-//   } catch (error) {
-    
-//   }
-//  }
+ const deleteStudent = async(req,res)=>{
+  try {
+    const {id} = req.params;
+    const deletedStudent = await students.findByIdAndDelete(id,{new:true});
+    if (!deletedStudent) {
+      return res.status(404).json({
+        Message: "Student not found",
+      });
+    }
+
+    return res.status(200).json({Message:"Student Deleted Successfully",students:deletedStudent})
+  } catch (error) {
+    return res.status(500).json({Message:"Internal Server Issues",error:error.message})
+  }
+ 
+ }
 
 
 
-export {addStudent,getAllstudents,getStudent,updateStudent};
+export {addStudent,getAllstudents,getStudent,updateStudent,deleteStudent};

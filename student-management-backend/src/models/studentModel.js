@@ -21,7 +21,7 @@ const studentSchema = new mongoose.Schema(
       required: true,
     },
     age: Number,
-    phone: String,
+    marks: Number,
   },
   { timestamps: true }
 );
