@@ -5,6 +5,13 @@ const updateMarks = async (req, res) => {
     const { id } = req.params;
     const { marks } = req.body;
 
+     if (marks === undefined) {
+       return res.status(400).json({
+         Message: "Marks are required",
+       });
+     }
+
+
     const student = await students.findByIdAndUpdate(
       id,
       { marks },

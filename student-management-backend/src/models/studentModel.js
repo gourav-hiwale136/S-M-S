@@ -21,11 +21,12 @@ const studentSchema = new mongoose.Schema(
       required: true,
     },
     age: Number,
-    marks: Number,
+    marks: {
+      type: Number,
+      default: 0,
+    },
   },
-  { timestamps: true }
+  // { timestamps: true }
 );
 
-const students = mongoose.model("Student", studentSchema);
-
-export default students;
+export default mongoose.model("Student", studentSchema);

@@ -6,7 +6,7 @@ import bcrypt from "bcrypt";
 const deleteAllstudent = async(req,res) =>{
     try {
         const deletedStudents = await students.deleteMany();
-        return res.status(200).json({Message:"All Students Deleted Sucessfully", deleteAllstudent});
+        return res.status(200).json({Message:"All Students Deleted Sucessfully", deletedStudents});
     } catch (error) {
         return res.status(500).json({Message:"Internal Server Issues"})
     }

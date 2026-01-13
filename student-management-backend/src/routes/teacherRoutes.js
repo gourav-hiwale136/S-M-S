@@ -6,6 +6,6 @@ import allowRoles from "../middleware/roleMiddleware.js";
 
 const teacherRouter = express.Router();
 
-teacherRouter.put("/students/id/marks", protect, allowRoles("teacher"), updateMarks);
+teacherRouter.put("/students/:id/marks", protect, allowRoles("teacher"), updateMarks);
 
 export default teacherRouter;
