@@ -16,6 +16,7 @@ const Login = async (req,res)=>{
     const user = await userModel.findOne({ email });
     if (!user) return res.status(404).json({ message: "User not found" });
     
+    // return res.status(201).json({Message:"User Login Sucessfull"})
     const match = await bcrypt.compare(password, user.password);
     if (!match) return res.status(401).json({ message: "Invalid password" });
     
@@ -25,7 +26,7 @@ const Login = async (req,res)=>{
       { expiresIn: "1d" }
     );
     
-    res.json({ token, user });
+    return res.status(201).json({Message:"Login Successfull", token, user });
   
 }
 

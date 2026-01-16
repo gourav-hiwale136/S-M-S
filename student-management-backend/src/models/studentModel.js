@@ -20,7 +20,6 @@ const studentSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    age: Number,
     marks: {
       type: Number,
       default: 0,

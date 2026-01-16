@@ -3,14 +3,7 @@ import userModel from "../models/userModel.js";
 import bcrypt from "bcrypt";
 
 
-const deleteAllstudent = async(req,res) =>{
-    try {
-        const deletedStudents = await students.deleteMany();
-        return res.status(200).json({Message:"All Students Deleted Sucessfully", deletedStudents});
-    } catch (error) {
-        return res.status(500).json({Message:"Internal Server Issues"})
-    }
-};
+
 
 const createTeacher = async(req,res)=>{
     try {
@@ -21,7 +14,23 @@ const createTeacher = async(req,res)=>{
     } catch (error) {
         return res.status(500).json({error:error.Message})
     }
-}
+};
 
 
-export {deleteAllstudent,createTeacher}
+const deleteTeacher = async(req,res)=>{
+    try {
+        const {id} = req.params;
+        const deletedTeacher = await userModel.findByIdAndDelete(id,{new:true});
+        if (!deletedTeacher) {
+          return res.status(404).json({
+            Message: "Teacher not found",
+          });
+        };
+        return res.status(200).json({Message:"Teacher Deleted Successfully",teachers:deletedTeacher})
+    } catch (error) {
+        return res.status(500).json({ Message: "Internal Server Issues", error: error.message });
+    }
+};
+
+
+export {createTeacher,deleteTeacher}
