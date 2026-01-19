@@ -12,7 +12,7 @@ teacherRouter.put("/students/:id/marks", protect, allowRoles("teacher"), updateM
 teacherRouter.delete("/students/:id", protect, allowRoles("teacher"), deleteAllstudent);
 
 // students routes
-studentRouter.post("/add", protect, allowRoles("admin"), addStudent);
+studentRouter.post("/add", protect, allowRoles("admin",), addStudent);
 studentRouter.get("/getAll", protect, allowRoles("admin", "teacher"), getAllstudents);
 studentRouter.get("/get/:id", protect, allowRoles("admin", "teacher"), getStudent);
 studentRouter.put("/update/:id", protect, allowRoles("admin"), updateStudent);
