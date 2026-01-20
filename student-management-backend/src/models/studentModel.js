@@ -2,30 +2,20 @@ import mongoose from "mongoose";
 
 const studentSchema = new mongoose.Schema(
   {
-    name: {
-      type: String,
-      required: true,
-    },
-    email: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-    rollNo: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-    className: {
-      type: String,
-      required: true,
-    },
+    name: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
+    rollNo: { type: Number, required: true },
+    className: { type: String, required: true },
+    age: { type: Number, required: true },
     marks: {
-      type: Number,
-      default: 0,
+      maths: { type: Number, default: 0 },
+      science: { type: Number, default: 0 },
+      english: { type: Number, default: 0 },
     },
   },
-  // { timestamps: true }
+  { timestamps: true },
 );
 
-export default mongoose.model("Student", studentSchema);
+const Students = mongoose.model("Student", studentSchema);
+
+export default Students;

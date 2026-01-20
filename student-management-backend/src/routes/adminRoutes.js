@@ -9,7 +9,7 @@ const adminRouter = express.Router();
 
 
 adminRouter.post("/teachers", protect, allowRoles("admin"), createTeacher);
-adminRouter.delete("/teachers", protect, allowRoles("admin"), deleteTeacher);
+adminRouter.delete("/teachers/:id", protect, allowRoles("admin"), deleteTeacher);
 
 
 export default adminRouter;

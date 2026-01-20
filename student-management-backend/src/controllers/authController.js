@@ -8,6 +8,7 @@ const Signup = async (req,res)=>{
     const hashedPassword = await bcrypt.hash(password,10)
     const user = await userModel.create({ name, email, password:hashedPassword, role });
     return res.status(201).json({Message:"User Registerd",user});
+   
 };
 
 
