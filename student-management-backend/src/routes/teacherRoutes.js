@@ -10,4 +10,5 @@ const teacherRouter = express.Router();
 
 teacherRouter.put("/students/:id/marks", protect, allowRoles("teacher"), updateMarks);
 
+
 export default teacherRouter;

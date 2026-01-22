@@ -6,7 +6,7 @@ import allowRoles from "../middleware/roleMiddleware.js";
 const studentRouter = express.Router();
 
 
-studentRouter.post("/add", protect, allowRoles("admin"), addStudent);
+studentRouter.post("/add", protect, allowRoles("admin", "teacher"), addStudent);
 studentRouter.get("/getAll", protect, allowRoles("admin", "teacher"), getAllstudents);
 studentRouter.get("/get/:id", protect, allowRoles("admin", "teacher"), getStudent);
 studentRouter.put("/update/:id", protect, allowRoles("admin"), updateStudent);

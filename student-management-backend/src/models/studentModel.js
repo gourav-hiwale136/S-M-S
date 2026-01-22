@@ -6,7 +6,7 @@ const studentSchema = new mongoose.Schema(
     email: { type: String, required: true, unique: true },
     rollNo: { type: Number, required: true },
     className: { type: String, required: true },
-    age: { type: Number, required: true },
+    age: { type: Number },
     marks: {
       maths: { type: Number, default: 0 },
       science: { type: Number, default: 0 },

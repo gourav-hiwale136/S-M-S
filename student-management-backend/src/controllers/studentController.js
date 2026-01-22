@@ -25,8 +25,8 @@ const addStudent = async(req,res)=>{
 const getAllstudents = async(req,res)=>{
   try {
     // const {email,rollNo} = req.body;
-    const Student = await students.find();
-    return res.status(201).json({Message:"Get All Students", Student});
+    const Students = await students.find();
+    return res.status(201).json({Message:"Get All Students", Students});
   } catch (error) {
     res.status(500).json({
       Message: "Internal Server Error",
